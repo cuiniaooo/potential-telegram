@@ -1,0 +1,31 @@
+li={2:[[[1],[2]],[[1,2],[]]]}
+
+for x in range(3,20):
+    sor=[]
+    di=li[x-1]
+    for pair in di:
+        for ele in pair:
+            flag = True
+            for num in ele:
+                C = x - 2 * num
+                if num>x/2:
+                    continue
+
+                elif C in ele and C!=num:
+                    flag=False
+                    break
+
+            if flag==True:
+                new=ele+[x]
+                rm=pair+[new]
+                new_list = list(filter(lambda v: v != ele, rm))
+                sor+=[new_list]
+
+
+    li[x] = sor
+
+
+
+for some in li:
+    print(f"{some}:{li[some]}, ")
+    print(f"with {len(li[some])} elements")
